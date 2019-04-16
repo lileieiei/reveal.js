@@ -1,0 +1,198 @@
+<!doctype html>
+<html lang="en">
+	<head>
+		<meta charset="utf-8">
+
+		<title>reveal.js – The HTML Presentation Framework</title>
+
+		<style>
+#box{
+  position:absolute;
+  absolute:40px;
+  height:500px;
+  width:300px;
+  margin:0 auto;
+  border:0px solid #0066FF;
+  overflow:hidden;
+  padding-bottom:20px;
+}
+#box li{
+  color:#333;
+  list-style-type:none;
+  height:60px;
+}
+#box ul{
+  list-style-type:none;
+  margin:0;
+  padding:0;
+}
+</style>
+
+
+		<link rel="stylesheet" href="css/reset.css">
+		<link rel="stylesheet" href="css/reveal.css">
+		<link rel="stylesheet" href="css/theme/sky.css" id="theme">
+
+		<!-- Theme used for syntax highlighting of code -->
+		<link rel="stylesheet" href="lib/css/monokai.css">
+
+		<!-- Printing and PDF exports -->
+		<script>
+            
+			var link = document.createElement( 'link' );
+			link.rel = 'stylesheet';
+			link.type = 'text/css';
+			link.href = window.location.search.match( /print-pdf/gi ) ? 'css/print/pdf.css' : 'css/print/paper.css';
+			document.getElementsByTagName( 'head' )[0].appendChild( link );
+		</script>
+	</head>
+	<body>
+		<div class="reveal">
+			<div class="slides">
+				<section>
+					<h1>康熙穿越记</h1>
+					<h3>一场划时代的穿越</h3>
+					<p>
+						<small>Created by 4组</small>
+					</p>
+				</section>
+				
+				<section data-background="mv/icbc.jpg" data-background-transition="zoom">
+					
+				</section>
+				
+				<section data-background="mv/xuanjiang.jpg" data-background-transition="zoom">
+					
+				</section>
+				
+				<section data-background="mv/huiyi.jpg" data-background-transition="zoom">
+					
+				</section>
+				<section data-background="mv/lab.jpg" data-background-transition:"zoom",>
+					
+				</section>
+				<section data-background="mv/ATM.jpg" data-background-transition:"zoom",>
+					
+				</section>
+				<section data-background="mv/shuwu.jpg" data-background-transition:"zoom",>
+					
+				</section>
+				<section data-background="mv/vip.jpg" data-background-transition:"zoom",>
+					
+				</section>
+				
+				
+				<section data-background="mv/star.gif">
+                    <div><span id="divTyping"  style="color:white" ></span></div>
+					<audio id="mykeyborad" src='mv/keyboard.mp3'    preload="auto" ></audio>
+                    <script>
+					
+					
+					</script>
+					
+
+					
+					
+                </section>
+				
+				
+                <section>
+                    <div id="box" align="left" >
+						<ul id="con1">
+							<li>导演</li>
+							<li>出品人</li>
+							<li>兼制</li>
+							<li>编剧</li>
+							<li>制片主任</li>
+							<li>执行导演</li>
+							<li>副导演</li>
+							<li>统筹</li>
+							<li>策划</li>
+							<li>主演</li>
+							<li>旁白君</li>
+							<li>场记</li>
+						</ul>
+                        
+                    </div>
+                    
+                
+                </section>
+				
+			</div>
+		</div>
+		<script src="js/reveal.js"></script>
+		
+		
+		<script>
+		var area=document.getElementById("box");
+area.innerHTML+=area.innerHTML;
+var liHeight=24;
+area.scrollTop=0;
+var delay=20;
+var speed=50;
+var time;
+function starMove(){
+  area.scrollTop++;
+  time=setInterval("scrollUp()",speed);
+}
+function scrollUp(){
+  if(area.scrollTop%liHeight==0){
+  clearInterval(time);
+  setTimeout("starMove()",delay);
+  }else{
+  area.scrollTop++;
+  if(area.scrollTop>=area.offsetHeight/2){
+  area.scrollTop=0;
+  }
+  }
+}
+setTimeout("starMove()",delay);
+		
+		
+
+			// More info https://github.com/hakimel/reveal.js#configuration
+			Reveal.initialize({
+				controls: true,
+				transition:"zoom",
+				
+				transitionSpeed:"slow",
+				progress: true,
+				center: true,
+				hash: true,
+				touch:true,
+
+				transition: 'slide', // none/fade/slide/convex/concave/zoom
+
+				// More info https://github.com/hakimel/reveal.js#dependencies
+				dependencies: [
+					
+					{ src: 'plugin/markdown/markdown.js', condition: function() { return !!document.querySelector( '[data-markdown]' ); } },
+					{ src: 'plugin/highlight/highlight.js', async: true },
+					{ src: 'plugin/search/search.js', async: true },
+					{ src: 'plugin/zoom-js/zoom.js', async: true },
+					{ src: 'plugin/notes/notes.js', async: true }
+				]
+			});
+		Reveal.addEventListener('slidechanged', function( event ) {
+						console.log( event.indexh);
+						if (event.indexh==8)
+						{typing();}
+					} );
+		var str = '在公元9021年，在平行宇宙的银河系第三悬臂边缘的蓝色星球上，一个崭新的机构：工商银行大清支行正式营业，<br>工商银行作为宇宙行正式跨越时间，开始了新的星辰大海之旅</br>';
+					var i = 0;
+					function typing(){
+						var myauto=document.getElementById('mykeyborad');
+						myauto.play();
+						var divTyping = document.getElementById('divTyping');
+						if (i <= str.length) {
+							divTyping.innerHTML = str.slice(0, i++) + '_';
+							setTimeout('typing()', 200);//递归调用
+						}
+						else{
+							divTyping.innerHTML = str;//结束打字,移除 _ 光标
+							}
+					}
+		</script>
+
+	</body>
+</html>
